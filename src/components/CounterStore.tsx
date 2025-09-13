@@ -1,5 +1,5 @@
 // App.tsx
-import ShowTodo from "./components/showtodo";
+import ShowTodo from "../components/showtodo";
 
 export default function App() {
   return (
