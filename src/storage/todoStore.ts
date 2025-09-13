@@ -1,4 +1,4 @@
-import { create } from "zuztand";
+import { create } from "zustand";
 
 interface TodoInterface {
   message: string;
