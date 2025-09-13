@@ -1,21 +1,25 @@
+// src/store/todoStore.ts
 import { create } from "zustand";
 
-interface TodoInterface {
-  message: string;
-  todoList: string[];
-  addTodo: (msg: string) => void;
-  removeTodo: (index: number) => void;
-  clearTodos: () => void;
+interface Todo {
+  id: number;
+  text: string;
 }
 
-export const  usetodoStore = create<TodoInterface>((set) => ({
-  message: "Todo list",
-  todoList: [],
-  addTodo: (msg: string) =>
-    set((state) => ({ todoList: [...state.todoList, msg] })),
+interface TodoStore {
+  todos: Todo[];
+  addTodo: (text: string) => void;
+  removeTodo: (id: number) => void;
+}
 
-  removeTodo: (index: number) =>
-    set((state) => ({ todoList: state.todoList.filter((_, i) => i !== index) })),
-  
-  clearTodos: () => set({ todoList: [] }),
+export const useTodoStore = create<TodoStore>((set) => ({
+  todos: [],
+  addTodo: (text) =>
+    set((state) => ({
+      todos: [...state.todos, { id: Date.now(), text }],
+    })),
+  removeTodo: (id) =>
+    set((state) => ({
+      todos: state.todos.filter((t) => t.id !== id),
+    })),
 }));

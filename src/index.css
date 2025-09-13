@@ -1,3 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* small customizations for better dark/gray look */
+:root {
+  --bg-900: #0b0c0e; /* very dark */
+  --bg-800: #0f1113;
+  --panel: #131517;
+  --muted: #9aa3ad;
+  --accent: #7dd3fc; /* pale cyan accent */
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  @apply bg-[color:var(--bg-900)] text-gray-100 antialiased;
+  background-color: var(--bg-900);
+  color: #e6eef6;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+/* card style */
+.card {
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.6);
+}
+
+/* subtle input focus */
+.input-focus:focus {
+  outline: 2px solid rgba(125,211,252,0.16);
+  box-shadow: 0 0 0 4px rgba(125,211,252,0.06);
+}
